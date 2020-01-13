@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="height=device-height, initial-scale=1.0">
+	<meta content="text/css">
+ 	<title>Голд</title>
+ 	<link rel="shortcut icon" type="image/png" href="favicon.png"/>
+ 	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<h3>Купить голд</h3>
+	<div class="b0">
+	<div>
+		<div class="b2">
+			<p>Заплачу руб</p>
+		</div>
+		<div class="b2">
+			<p>Получу</p>
+		</div>
+	</div>
+
+	<div>
+		<div class="b2">
+			<input id="i_rub" type="number" min="0" oninput="tt()"><br>
+			<button onclick="op('i_rub', -100, 0)">-100</button>
+			<button onclick="op('i_rub', -50, 0)">-50</button>
+			<button onclick="op('i_rub', -5, 0)">-5</button>
+			<button onclick="op('i_rub', +5, 0)">+5</button>
+			<button onclick="op('i_rub', +50, 0)">+50</button>
+			<button onclick="op('i_rub', +100, 0)">+100</button>
+		</div>
+		<div class="b2">
+			<p id="vChm">0 чм по лавке 1/60</p>
+			<p id="vGold">0 голд</p>
+		</div>
+	</div>
+	</div>
+	<script>
+		tt();
+		function tt(){
+			let rub = document.getElementById("i_rub").value;
+        	if (rub.length == 0) {rub = 0};
+        
+        	let gold = rub / 2 * 1000;
+        	document.getElementById("vGold").innerHTML = gold + " голд";
+
+        	let chm = gold / 60;
+        	chm = fix_chm(chm);
+        	document.getElementById("vChm").innerHTML = chm + " чм по лавке 1/60";
+        }
+
+        function fix_chm(a){
+            a = a.toFixed(2);
+            if (a >= 416) {
+            	a = a / 10;
+            	a = Math.ceil(a); //округлить вверх до целого
+            	a = a * 10;
+            }
+            if (a < 416) {
+                a = a / 10;
+                a = Math.floor(a); // округлить вниз до целого
+                a = a * 10;
+            }
+            return a;
+        }
+
+        function op (i, n, temp){
+            temp = Number(document.getElementById(i).value);
+            document.getElementById(i).value = n+temp;
+            if (document.getElementById(i).value < 0){
+            	document.getElementById(i).value = 0
+            };
+            tt()
+        }
+	</script>
+</body>
+</html>
