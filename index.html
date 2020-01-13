@@ -26,10 +26,6 @@
 	<div>
 		<div class="b2">
 			<input id="i_otdam" type="number" min="0" oninput="tt()"><br>
-			<button onclick="op('i_otdam', -50000, 0)">-50</button>
-			<button onclick="op('i_otdam', -5000, 0)">-5</button>
-			<button onclick="op('i_otdam', +5000, 0)">+5</button>
-			<button onclick="op('i_otdam', +50000, 0)">+50</button>
 		</div>
 		<div class="b2">
 			<p id="vPol">0 голд</p>
@@ -42,10 +38,6 @@
 		</div>
 		<div class="b2">
 			<input id="i_pol" type="number" min="0" oninput="tt()"><br>
-			<button onclick="op('i_pol', -50000, 0)">-50</button>
-			<button onclick="op('i_pol', -5000, 0)">-5</button>
-			<button onclick="op('i_pol', +5000, 0)">+5</button>
-			<button onclick="op('i_pol', +50000, 0)">+50</button>
 		</div>
 	</div>
 
@@ -72,15 +64,6 @@
         function fix_gold(a){
             a = a.toFixed(0);
             return a;
-        }
-
-        function op (i, n, temp){
-            temp = Number(document.getElementById(i).value);
-            document.getElementById(i).value = n+temp;
-            if (document.getElementById(i).value < 0){
-            	document.getElementById(i).value = 0
-            };
-            tt()
         }
 	</script>
 </body>
